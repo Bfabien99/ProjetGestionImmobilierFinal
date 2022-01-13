@@ -29,6 +29,12 @@
             return $callModel;
         }
 
+        public function obtainLimit($limite){
+            $initModel = new immovableModel();
+            $callModel = $initModel->getLimite($limite);
+            return $callModel;
+        }
+
         public function cibleId($id){
             $initModel = new immovableModel();
             $callModel = $initModel->cible($id);
@@ -44,6 +50,12 @@
         public function search($key){
             $initModel = new immovableModel();
             $callModel = $initModel->search($key);
+            return $callModel;
+        }
+
+        public function searchAdmin($key){
+            $initModel = new immovableModel();
+            $callModel = $initModel->searchAdmin($key);
             return $callModel;
         }
 

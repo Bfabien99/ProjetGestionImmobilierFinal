@@ -1,6 +1,7 @@
 <?php
+    $limit=6;
     $initController = new immovableController;
-    $Calls = $initController->obtainAll();
+    $Calls = $initController->obtainLimit($limit);
 
     if (isset($_POST['submit'])) {
         if (!empty($_POST['search'])) {
@@ -8,7 +9,7 @@
         }
         else 
         {
-            $Calls = $initController->obtainAll();
+            $Calls = $initController->obtainLimit($limit);
             header('location:/');
         }
     }
@@ -28,7 +29,7 @@
             <h2>#GestionImmobilier</h2>
             <form action="" method="post">
             <input type="search" name="search" placeholder="recherche..." title="Entrer le prix ou la localité qui vous interesse">
-            <input type="submit" value="recherche" name="submit">
+            <input type="submit" value="go" name="submit"> 
             </form>
         </div>
         <div class="banner">
@@ -39,10 +40,13 @@
     <nav>
         <ul>
             <li>
-                <a href="/view/login/">Connexion</a>
+                <a href="/">Accueil</a>
             </li>
             <li>
-                <a href="/view/login/">Toutes les propriétés</a>
+                <a href="/view/login/" target="_blank">Connexion</a>
+            </li>
+            <li>
+                <a href="/view/all/">Toutes les propriétés</a>
             </li>
             <li>
                 <a href="/view/login/">Nous Contacter</a>
@@ -53,7 +57,11 @@
         <?php foreach($Calls as $call):?>
         <div class="child">
             <a href="/view/viewdetails&property_<?=$call['id']?>/">
-                <h3><?= $call['owner']?></h3>
+                <div class="pic">
+                </div>
+                <h3>Superficie : <?= $call['area']?> m²</h3>
+                <h3>Prix : <?= $call['price']?> fcfa</h3>
+                <h3>Localisation : <?= $call['location']?></h3>
             </a>
         </div>
         <?php endforeach;?>

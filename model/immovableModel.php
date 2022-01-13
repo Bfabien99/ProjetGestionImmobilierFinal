@@ -73,7 +73,7 @@
         public function getLimite($limite)
         {
             $db = $this->dbConnect();
-            $query = $db->prepare('SELECT * FROM property LIMIT '.$limite);
+            $query = $db->prepare('SELECT * FROM property ORDER BY id DESC LIMIT '.$limite);
             $query->execute();
             $get = $query->fetchAll(PDO::FETCH_ASSOC);
             return $get;
@@ -116,6 +116,20 @@
             $query->execute([
                 'price' => $key,
                 'location' => $location,
+            ]);
+            $get = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $get;
+        }
+
+        public function searchAdmin($key)
+        {
+            $db = $this->dbConnect();
+            $text = '%'. $key .'%';
+            $query = $db->prepare('SELECT * FROM property WHERE price <= :price OR location LIKE :location OR owner LIKE :name');
+            $query->execute([
+                'price' => $key,
+                'location' => $text,
+                'name' => $text,
             ]);
             $get = $query->fetchAll(PDO::FETCH_ASSOC);
             return $get;

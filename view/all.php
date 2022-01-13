@@ -3,14 +3,16 @@
     $initController = new adminController;
     $admin = $initController->show();
     $initController2 = new immovableController;
-    $immovables = $initController2->getLimite($limite);
+    $immovables = $initController2->getAll();
     if (isset($_POST['submit'])) {
-        if (!empty($_POST['search'])) {
-            $immovables = $initController2->search($_POST['search']);
+        if (!empty($_POST['search'])) 
+        {
+            $immovables = $initController2->searchAdmin($_POST['search']);
+            header('location:/view/admin/');
         }
         else 
         {
-            $immovables = $initController2->getLimite($limite);
+            $immovables = $initController2->getAll();
             header('location:/view/admin/');
         }
     }
@@ -55,10 +57,7 @@
                 </div>
             </div>
             <?php endforeach?>
-            <?php if ($immovables == null ):?>
-                <h4>Aucun Résultat</h4>
-            <?php endif; ?>
         </div>
-        <a href="/view/admin/view&more&property/" class="more">Voir Tout</a>
+        <a href="/view/admin/" class="more">Voir moins</a>
 </body>
 </html>
