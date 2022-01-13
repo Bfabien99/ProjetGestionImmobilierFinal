@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.topbar{
+    background-color: rgb(15, 17, 17);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.topbar h2{
+    color: rgb(46, 46, 46);
+}
+
+.topbar input{
+    height: 30px;
+    width: 200px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding:5px;
+}
+
+.banner{
+    display: flex;
+    justify-content:center;
+    background-color: white;
+    animation-name: banner;
+    animation-duration:10s;
+    animation-iteration-count: infinite;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    border: 1px solid silver;
+    box-shadow: 0px 2px 5px lightgray;
+    background: url("/assets/image/house_searching.svg") no-repeat center;
+    background-size: cover;
+    height: 300px;
+}
+
+/* .banner img{
+    width:60%;
+} */
+
+.banner h3{
+    color: rgb(190, 190, 190);
+    position: absolute;
+    background-color:rgba(0, 0, 0, 0.637);
+    padding: 10px;
+}
+
+.banner h3::after{
+    content: "Recherchez et obtenez la maison qui vous correspond...";
+    animation-name: text;
+    animation-duration:10s;
+    animation-iteration-count: infinite;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background-color:rgb(241, 233, 233);
+    }
+
+    @keyframes banner {
+        0% { background:url("/assets/image/house_searching.svg") no-repeat center ;}
+        30% { background:url("/assets/image/select_house.svg") no-repeat center ;}
+        70% { background:url("/assets/image/house_location.svg") no-repeat center ;}
+        100% { background:url("/assets/image/house_searching.svg") no-repeat center ;}
+    }
+
+    @keyframes text {
+        0% { content: "Recherchez et obtenez la maison qui vous correspond... "; }
+        30% { content: "Choisissez celle qui convient à votre budget "; }
+        70% { content: "Recherchez la localité qui vous convient "; }
+        100% { content: "Recherchez et obtenez la maison qui vous correspond... "; }
+    }
